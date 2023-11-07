@@ -1,0 +1,28 @@
+C:\Users\maksi\source\repos\UDPServer\UDPServer\bin\Debug\net6.0\UDPServer.exe
+C:\Users\maksi\source\repos\UDPServer\UDPServer\bin\Debug\net6.0\UDPServer.deps.json
+C:\Users\maksi\source\repos\UDPServer\UDPServer\bin\Debug\net6.0\UDPServer.runtimeconfig.json
+C:\Users\maksi\source\repos\UDPServer\UDPServer\bin\Debug\net6.0\UDPServer.dll
+C:\Users\maksi\source\repos\UDPServer\UDPServer\bin\Debug\net6.0\UDPServer.pdb
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.AssemblyInfoInputs.cache
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.AssemblyInfo.cs
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.csproj.CoreCompileInputs.cache
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.dll
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\refint\UDPServer.dll
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.pdb
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\UDPServer.genruntimeconfig.cache
+C:\Users\maksi\source\repos\UDPServer\UDPServer\obj\Debug\net6.0\ref\UDPServer.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\bin\Debug\net6.0\UDPServer.exe
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\bin\Debug\net6.0\UDPServer.deps.json
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\bin\Debug\net6.0\UDPServer.runtimeconfig.json
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\bin\Debug\net6.0\UDPServer.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\bin\Debug\net6.0\UDPServer.pdb
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.AssemblyInfoInputs.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.AssemblyInfo.cs
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.csproj.CoreCompileInputs.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\refint\UDPServer.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.pdb
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\UDPServer.genruntimeconfig.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\Servers\UDPServer\obj\Debug\net6.0\ref\UDPServer.dll
