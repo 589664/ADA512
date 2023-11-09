@@ -1,17 +1,35 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 class IDPServers
 {
-    static void Main()
+    static async Task Main()
     {
-        int port = 12345;
-        UdpClient udpServer = new(port);
+        int udpPort = 12345;
+        int tcpPort = 54321;
 
-        // Print the IP addresses that the server is listening on
+        // Start UDP server as a task
+        Task udpServerTask = StartUDPServer(udpPort);
+
+        // Start TCP server as a task
+        Task tcpServerTask = StartTCPServer(tcpPort);
+
+        Console.WriteLine("UDP Server on port: " + udpPort);
+        Console.WriteLine("TCP Server on port: " + tcpPort);
+
+        // Wait for both tasks to complete
+        await Task.WhenAll(udpServerTask, tcpServerTask);
+    }
+
+    static async Task StartUDPServer(int udpPort)
+    {
+        UdpClient udpServer = new(udpPort);
+
         Console.WriteLine("UDP Server \nLocal IP addresses:");
 
         foreach (var ipAddress in GetLocalIPAddresses())
@@ -19,23 +37,41 @@ class IDPServers
             Console.WriteLine(ipAddress);
         }
 
-        // Retrieve and print the public IP address
         Console.WriteLine("Public IP addresses:");
-        string publicIpAddress = GetPublicIPAddress().GetAwaiter().GetResult();
+        string publicIpAddress = await GetPublicIPAddress();
         Console.WriteLine(publicIpAddress);
-
-        Console.WriteLine("On port/ports:\n" + port);
 
         while (true)
         {
-            IPEndPoint clientEndPoint = new(IPAddress.Any, port);
-            byte[] receivedBytes = udpServer.Receive(ref clientEndPoint);
-            string receivedData = Encoding.ASCII.GetString(receivedBytes);
+            IPEndPoint udpClientEndPoint = new(IPAddress.Any, udpPort);
+            byte[] udpReceivedBytes = udpServer.Receive(ref udpClientEndPoint);
+            string udpReceivedData = Encoding.ASCII.GetString(udpReceivedBytes);
 
-            Console.WriteLine("Received data from " + clientEndPoint + ": " + receivedData);
+            Console.WriteLine("Received UDP data from " + udpClientEndPoint + ": " + udpReceivedData);
 
-            byte[] sendData = Encoding.ASCII.GetBytes("Server received: " + receivedData);
-            udpServer.Send(sendData, sendData.Length, clientEndPoint);
+            byte[] udpSendData = Encoding.ASCII.GetBytes("UDP Server received: " + udpReceivedData);
+            udpServer.Send(udpSendData, udpSendData.Length, udpClientEndPoint);
+        }
+    }
+
+    static async Task StartTCPServer(int tcpPort)
+    {
+        TcpListener tcpListener = new(IPAddress.Any, tcpPort);
+        tcpListener.Start();
+
+        while (true)
+        {
+            TcpClient tcpClient = await tcpListener.AcceptTcpClientAsync();
+            NetworkStream tcpStream = tcpClient.GetStream();
+            byte[] tcpReceivedBytes = new byte[1024];
+            int bytesRead = await tcpStream.ReadAsync(tcpReceivedBytes, 0, tcpReceivedBytes.Length);
+            string tcpReceivedData = Encoding.ASCII.GetString(tcpReceivedBytes, 0, bytesRead);
+
+            Console.WriteLine("Received TCP data from " + ((IPEndPoint?)tcpClient.Client.RemoteEndPoint)?.ToString() + ": " + tcpReceivedData);
+
+            byte[] tcpSendData = Encoding.ASCII.GetBytes("TCP Server received: " + tcpReceivedData);
+            await tcpStream.WriteAsync(tcpSendData, 0, tcpSendData.Length);
+            tcpClient.Close();
         }
     }
 

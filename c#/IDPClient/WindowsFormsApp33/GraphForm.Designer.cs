@@ -45,15 +45,24 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
-            this.UDPButton = new System.Windows.Forms.RadioButton();
-            this.TCPButton = new System.Windows.Forms.RadioButton();
+            this.radioButtonUDP = new System.Windows.Forms.RadioButton();
+            this.radioButtonTCP = new System.Windows.Forms.RadioButton();
+            this.PIDControl = new System.Windows.Forms.GroupBox();
+            this.transmissionSimGroup = new System.Windows.Forms.GroupBox();
+            this.ipAdress = new System.Windows.Forms.TextBox();
+            this.transmissionDelay = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.PIDControl.SuspendLayout();
+            this.transmissionSimGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transmissionDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // cartesianChart1
             // 
             this.cartesianChart1.Location = new System.Drawing.Point(69, 30);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(999, 588);
+            this.cartesianChart1.Size = new System.Drawing.Size(1008, 624);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             // 
@@ -62,10 +71,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1136, 451);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(89, 364);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 51);
+            this.button1.Size = new System.Drawing.Size(143, 37);
             this.button1.TabIndex = 1;
             this.button1.Text = "AddRandom";
             this.button1.UseVisualStyleBackColor = false;
@@ -74,7 +83,7 @@
             // plus
             // 
             this.plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plus.Location = new System.Drawing.Point(1134, 77);
+            this.plus.Location = new System.Drawing.Point(148, 36);
             this.plus.Name = "plus";
             this.plus.Size = new System.Drawing.Size(72, 54);
             this.plus.TabIndex = 2;
@@ -85,7 +94,7 @@
             // minus
             // 
             this.minus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minus.Location = new System.Drawing.Point(1240, 77);
+            this.minus.Location = new System.Drawing.Point(238, 36);
             this.minus.Name = "minus";
             this.minus.Size = new System.Drawing.Size(72, 54);
             this.minus.TabIndex = 3;
@@ -96,7 +105,7 @@
             // setKP
             // 
             this.setKP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setKP.Location = new System.Drawing.Point(1187, 167);
+            this.setKP.Location = new System.Drawing.Point(75, 109);
             this.setKP.Name = "setKP";
             this.setKP.Size = new System.Drawing.Size(110, 35);
             this.setKP.TabIndex = 4;
@@ -105,7 +114,7 @@
             // setKI
             // 
             this.setKI.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setKI.Location = new System.Drawing.Point(1187, 230);
+            this.setKI.Location = new System.Drawing.Point(76, 163);
             this.setKI.Name = "setKI";
             this.setKI.Size = new System.Drawing.Size(109, 35);
             this.setKI.TabIndex = 5;
@@ -114,7 +123,7 @@
             // setKD
             // 
             this.setKD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setKD.Location = new System.Drawing.Point(1186, 291);
+            this.setKD.Location = new System.Drawing.Point(76, 212);
             this.setKD.Name = "setKD";
             this.setKD.Size = new System.Drawing.Size(110, 35);
             this.setKD.TabIndex = 6;
@@ -124,7 +133,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1168, 30);
+            this.label1.Location = new System.Drawing.Point(19, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 29);
             this.label1.TabIndex = 7;
@@ -135,7 +144,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1131, 167);
+            this.label2.Location = new System.Drawing.Point(19, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 29);
             this.label2.TabIndex = 8;
@@ -146,7 +155,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1129, 230);
+            this.label3.Location = new System.Drawing.Point(19, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 29);
             this.label3.TabIndex = 9;
@@ -157,16 +166,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1129, 294);
+            this.label4.Location = new System.Drawing.Point(19, 212);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 29);
             this.label4.TabIndex = 10;
             this.label4.Text = "kD:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1097, 392);
+            this.textBox1.Location = new System.Drawing.Point(34, 314);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(109, 35);
             this.textBox1.TabIndex = 11;
@@ -175,7 +185,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1240, 392);
+            this.textBox2.Location = new System.Drawing.Point(176, 314);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(109, 35);
             this.textBox2.TabIndex = 12;
@@ -185,7 +195,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(1092, 349);
+            this.label5.Location = new System.Drawing.Point(29, 276);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 26);
             this.label5.TabIndex = 13;
@@ -196,7 +206,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(1235, 349);
+            this.label6.Location = new System.Drawing.Point(171, 276);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(117, 26);
             this.label6.TabIndex = 14;
@@ -207,7 +217,7 @@
             // 
             this.startButton.BackColor = System.Drawing.Color.LightGreen;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(1240, 554);
+            this.startButton.Location = new System.Drawing.Point(179, 41);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(95, 36);
             this.startButton.TabIndex = 15;
@@ -215,57 +225,124 @@
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.startTransmission);
             // 
-            // UDPButton
+            // radioButtonUDP
             // 
-            this.UDPButton.AutoSize = true;
-            this.UDPButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UDPButton.Location = new System.Drawing.Point(1119, 538);
-            this.UDPButton.Name = "UDPButton";
-            this.UDPButton.Size = new System.Drawing.Size(87, 30);
-            this.UDPButton.TabIndex = 16;
-            this.UDPButton.TabStop = true;
-            this.UDPButton.Text = "UDP";
-            this.UDPButton.UseVisualStyleBackColor = true;
+            this.radioButtonUDP.AutoSize = true;
+            this.radioButtonUDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonUDP.Location = new System.Drawing.Point(23, 31);
+            this.radioButtonUDP.Name = "radioButtonUDP";
+            this.radioButtonUDP.Size = new System.Drawing.Size(87, 30);
+            this.radioButtonUDP.TabIndex = 16;
+            this.radioButtonUDP.TabStop = true;
+            this.radioButtonUDP.Text = "UDP";
+            this.radioButtonUDP.UseVisualStyleBackColor = true;
             // 
-            // TCPButton
+            // radioButtonTCP
             // 
-            this.TCPButton.AutoSize = true;
-            this.TCPButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCPButton.Location = new System.Drawing.Point(1119, 578);
-            this.TCPButton.Name = "TCPButton";
-            this.TCPButton.Size = new System.Drawing.Size(83, 30);
-            this.TCPButton.TabIndex = 17;
-            this.TCPButton.TabStop = true;
-            this.TCPButton.Text = "TCP";
-            this.TCPButton.UseVisualStyleBackColor = true;
+            this.radioButtonTCP.AutoSize = true;
+            this.radioButtonTCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTCP.Location = new System.Drawing.Point(23, 67);
+            this.radioButtonTCP.Name = "radioButtonTCP";
+            this.radioButtonTCP.Size = new System.Drawing.Size(83, 30);
+            this.radioButtonTCP.TabIndex = 17;
+            this.radioButtonTCP.TabStop = true;
+            this.radioButtonTCP.Text = "TCP";
+            this.radioButtonTCP.UseVisualStyleBackColor = true;
+            // 
+            // PIDControl
+            // 
+            this.PIDControl.Controls.Add(this.plus);
+            this.PIDControl.Controls.Add(this.minus);
+            this.PIDControl.Controls.Add(this.label1);
+            this.PIDControl.Controls.Add(this.setKP);
+            this.PIDControl.Controls.Add(this.button1);
+            this.PIDControl.Controls.Add(this.label6);
+            this.PIDControl.Controls.Add(this.label2);
+            this.PIDControl.Controls.Add(this.textBox2);
+            this.PIDControl.Controls.Add(this.label5);
+            this.PIDControl.Controls.Add(this.label3);
+            this.PIDControl.Controls.Add(this.setKI);
+            this.PIDControl.Controls.Add(this.textBox1);
+            this.PIDControl.Controls.Add(this.label4);
+            this.PIDControl.Controls.Add(this.setKD);
+            this.PIDControl.Location = new System.Drawing.Point(1110, 30);
+            this.PIDControl.Name = "PIDControl";
+            this.PIDControl.Size = new System.Drawing.Size(324, 419);
+            this.PIDControl.TabIndex = 18;
+            this.PIDControl.TabStop = false;
+            this.PIDControl.Text = "PID Controller";
+            this.PIDControl.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // transmissionSimGroup
+            // 
+            this.transmissionSimGroup.BackColor = System.Drawing.Color.Transparent;
+            this.transmissionSimGroup.Controls.Add(this.label8);
+            this.transmissionSimGroup.Controls.Add(this.label7);
+            this.transmissionSimGroup.Controls.Add(this.transmissionDelay);
+            this.transmissionSimGroup.Controls.Add(this.ipAdress);
+            this.transmissionSimGroup.Controls.Add(this.radioButtonUDP);
+            this.transmissionSimGroup.Controls.Add(this.radioButtonTCP);
+            this.transmissionSimGroup.Controls.Add(this.startButton);
+            this.transmissionSimGroup.Location = new System.Drawing.Point(1107, 467);
+            this.transmissionSimGroup.Name = "transmissionSimGroup";
+            this.transmissionSimGroup.Size = new System.Drawing.Size(324, 197);
+            this.transmissionSimGroup.TabIndex = 19;
+            this.transmissionSimGroup.TabStop = false;
+            this.transmissionSimGroup.Text = "Data Transmission";
+            // 
+            // ipAdress
+            // 
+            this.ipAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipAdress.Location = new System.Drawing.Point(131, 107);
+            this.ipAdress.Name = "ipAdress";
+            this.ipAdress.Size = new System.Drawing.Size(157, 35);
+            this.ipAdress.TabIndex = 18;
+            // 
+            // transmissionDelay
+            // 
+            this.transmissionDelay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transmissionDelay.Location = new System.Drawing.Point(131, 148);
+            this.transmissionDelay.Name = "transmissionDelay";
+            this.transmissionDelay.Size = new System.Drawing.Size(120, 35);
+            this.transmissionDelay.TabIndex = 19;
+            this.transmissionDelay.ValueChanged += new System.EventHandler(this.transmissionDelay_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 29);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "IP:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(18, 152);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 29);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Delay:";
             // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1371, 658);
-            this.Controls.Add(this.TCPButton);
-            this.Controls.Add(this.UDPButton);
-            this.Controls.Add(this.startButton);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.setKD);
-            this.Controls.Add(this.setKI);
-            this.Controls.Add(this.setKP);
-            this.Controls.Add(this.minus);
-            this.Controls.Add(this.plus);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1443, 683);
+            this.Controls.Add(this.transmissionSimGroup);
+            this.Controls.Add(this.PIDControl);
             this.Controls.Add(this.cartesianChart1);
             this.Name = "GraphForm";
             this.Text = "Form1";
+            this.PIDControl.ResumeLayout(false);
+            this.PIDControl.PerformLayout();
+            this.transmissionSimGroup.ResumeLayout(false);
+            this.transmissionSimGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transmissionDelay)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -287,8 +364,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.RadioButton UDPButton;
-        private System.Windows.Forms.RadioButton TCPButton;
+        private System.Windows.Forms.RadioButton radioButtonUDP;
+        private System.Windows.Forms.RadioButton radioButtonTCP;
+        private System.Windows.Forms.GroupBox PIDControl;
+        private System.Windows.Forms.GroupBox transmissionSimGroup;
+        private System.Windows.Forms.TextBox ipAdress;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown transmissionDelay;
     }
 }
 
