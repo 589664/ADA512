@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Assignment2_network_communications
+namespace IDPClient
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Assignment2_network_communications
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GraphForm());
+            Application.Run(new ClientForm());
         }
     }
 }
