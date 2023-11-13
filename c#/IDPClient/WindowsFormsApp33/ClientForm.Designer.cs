@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.pidChart = new LiveCharts.WinForms.CartesianChart();
             this.button1 = new System.Windows.Forms.Button();
             this.plus = new System.Windows.Forms.Button();
             this.minus = new System.Windows.Forms.Button();
@@ -54,19 +54,21 @@
             this.transmissionDelay = new System.Windows.Forms.NumericUpDown();
             this.ipAdress = new System.Windows.Forms.TextBox();
             this.transmissionChart = new LiveCharts.WinForms.CartesianChart();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.PIDControl.SuspendLayout();
             this.transmissionSimGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transmissionDelay)).BeginInit();
             this.SuspendLayout();
             // 
-            // cartesianChart1
+            // pidChart
             // 
-            this.cartesianChart1.Location = new System.Drawing.Point(69, 30);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(567, 618);
-            this.cartesianChart1.TabIndex = 0;
-            this.cartesianChart1.Text = "cartesianChart1";
-            this.cartesianChart1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.cartesianChart1_ChildChanged);
+            this.pidChart.Location = new System.Drawing.Point(68, 59);
+            this.pidChart.Name = "pidChart";
+            this.pidChart.Size = new System.Drawing.Size(567, 618);
+            this.pidChart.TabIndex = 0;
+            this.pidChart.Text = "pidChart";
+            this.pidChart.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.cartesianChart1_ChildChanged);
             // 
             // button1
             // 
@@ -332,23 +334,48 @@
             // 
             // transmissionChart
             // 
-            this.transmissionChart.Location = new System.Drawing.Point(664, 30);
+            this.transmissionChart.AccessibleName = "";
+            this.transmissionChart.Location = new System.Drawing.Point(660, 59);
             this.transmissionChart.Name = "transmissionChart";
             this.transmissionChart.Size = new System.Drawing.Size(577, 618);
             this.transmissionChart.TabIndex = 20;
-            this.transmissionChart.Text = "cartesianChart2";
+            this.transmissionChart.Text = "TransmissionSpeed";
             this.transmissionChart.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.transmissionChart_ChildChanged);
             // 
-            // GraphForm
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(257, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(178, 29);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "PID Controller";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(784, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(359, 29);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Protocol Transmission Speed";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1676, 702);
+            this.ClientSize = new System.Drawing.Size(1676, 696);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.transmissionChart);
             this.Controls.Add(this.transmissionSimGroup);
             this.Controls.Add(this.PIDControl);
-            this.Controls.Add(this.cartesianChart1);
-            this.Name = "GraphForm";
+            this.Controls.Add(this.pidChart);
+            this.Name = "ClientForm";
             this.Text = "Form1";
             this.PIDControl.ResumeLayout(false);
             this.PIDControl.PerformLayout();
@@ -356,12 +383,13 @@
             this.transmissionSimGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transmissionDelay)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private LiveCharts.WinForms.CartesianChart pidChart;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button plus;
         private System.Windows.Forms.Button minus;
@@ -386,6 +414,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown transmissionDelay;
         private LiveCharts.WinForms.CartesianChart transmissionChart;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 

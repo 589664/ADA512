@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-//using System.Drawing;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -18,18 +17,17 @@ namespace IDPClient
     {
 
         // UDP/TCP communication settings
-        string serverIP = "192.168.0.18";       // Server IP address
+        string serverIP = "84.215.100.38";      // Server IP address
         int UDPport = 12345;                    // UDP Server port number
         int TCPport = 54321;                    // TCP Server port number
-        int transmissionModeStatus = 0;         // transmission mode status 0 = normal, 1 = none, 2 = high
         UdpClient udpClient;                    // UDP client for communication
         IPEndPoint serverEndPoint;              // Server endpoint
-        TcpClient tcpClient;                    // TCP client for communication
-        NetworkStream networkStream;            // Network stream for TCP communication
+        private TcpClient tcpClient;            // TCP client for communication
+        private NetworkStream networkStream;    // Network stream for TCP communication
 
         // PID controller settings
         // PID controller settings
-        int time = 100;                         // Timer interval in milliseconds
+        int time = 50;                          // Timer interval in milliseconds
         int delay = 1;                          // Delay in milliseconds
         double setpoint = 40.0;                 // Desired temperature setpoint
         double outputLoc, outputPID;            // Control outputs
@@ -43,17 +41,12 @@ namespace IDPClient
         int countLOC = 0, countPID = 0;         // Iteration counters
 
         // Variables to track transmission speed
-        double udpTransmissionSpeed = 0.0;                      // Speed in bytes per second for UDP
-        double tcpTransmissionSpeed = 0.0;                      // Speed in bytes per second for TCP
+        double udpTransmissionSpeed = 0.0;                                  // Speed in bytes per second for UDP
+        double tcpTransmissionSpeed = 0.0;                                  // Speed in bytes per second for TCP
         DateTime udpLastTransmissionTime = DateTime.UtcNow;
         DateTime tcpLastTransmissionTime = DateTime.UtcNow;
 
-        // Initialize timer for switching transmission modes
-        System.Windows.Forms.Timer trafficModeTimer = new System.Windows.Forms.Timer();
-        int timeInCurrentMode = 0;
-
-
-        Random randomNR = new Random();                                     // Random number generator
+        private Random randomNR = new Random();                             // Random number generator
 
         // LiveCharts setup
         private SeriesCollection seriesCollection;                          // Collection of chart series
@@ -115,7 +108,7 @@ namespace IDPClient
 
             // LiveCharts configuration
             seriesCollection = new SeriesCollection(setpointSeries);
-            cartesianChart1.Series = seriesCollection;
+            pidChart.Series = seriesCollection;
             transmissionSeriesCollection = new SeriesCollection(setpointSeries);
             transmissionChart.Series = transmissionSeriesCollection;
 
@@ -132,16 +125,6 @@ namespace IDPClient
             timer.Tick += Activity;
             timer.Start();
 
-            // Initialize the traffic mode timer
-            trafficModeTimer.Interval = 5000; // every 30 second
-            trafficModeTimer.Tick += TrafficModeTimer_Tick;
-            trafficModeTimer.Start();
-        }
-
-        private void TrafficModeTimer_Tick(object sender, EventArgs e)
-        {
-            // Switch to the next transmission mode cyclically
-            transmissionModeStatus = (transmissionModeStatus + 1) % 3; // 0 for Normal, 1 for None, 2 for High
         }
 
         private void Activity(object sender, EventArgs e)
@@ -259,13 +242,13 @@ namespace IDPClient
                     await writer.WriteLineAsync(messageToSend);
                     await writer.FlushAsync(); // Ensure the message is sent immediately
 
-                    // Calculate TCP transmission speed (as in your original code)
+                    // Calculate TCP transmission speed
                     DateTime currentTime = DateTime.UtcNow;
                     double elapsedTimeSeconds = (currentTime - tcpLastTransmissionTime).TotalSeconds;
                     tcpTransmissionSpeed = messageToSend.Length / elapsedTimeSeconds;
                     tcpLastTransmissionTime = currentTime;
 
-                    // Display TCP transmission speed on the UI thread (as in your original code)
+                    // Display TCP transmission speed on the UI thread
                     BeginInvoke((Action)(() =>
                     {
                         tcpTransmissionSpeedSeries.Values.Add(Math.Floor(tcpTransmissionSpeed));
@@ -317,12 +300,12 @@ namespace IDPClient
             else if (radioButtonTCP.Checked)
             {
                 // Start a separate task for TCP communication
-                Task runTCP = Task.Run(() =>
+                Task runTCP = Task.Run(async () =>
                 {
                     // TCP setup
                     tcpClient = new TcpClient();
                     networkStream = null;
-                    TCPProtocol();
+                    await TCPProtocol();
                 });
             }
         }
@@ -409,17 +392,22 @@ namespace IDPClient
 
         }
 
-        private void elementHost2_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
-        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
         private void transmissionChart_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

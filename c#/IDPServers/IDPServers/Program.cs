@@ -1,19 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 class IDPServers
 {
-    // Define PID-related variables
-    int TID = 50;
+    // VARIABLE DECLARATION
     double setpoint = 40.0;
-    double outputLoc, outputPID;
-
-    double temperatLoc = 40.0;
+    double outputPID;
     double temperatPID = 40.0;
 
     double kp = 0.1;
@@ -22,14 +15,13 @@ class IDPServers
 
     double integral = 0;
     double prevError = 0;
-    int countLOC = 0, countPID = 0;
 
     // Define UDP server-related variables
-    int udpPort = 12345;
+    readonly int udpPort = 12345;
     UdpClient udpServer = new();
 
     // Define TCP server-related variables
-    int tcpPort = 54321;
+    readonly int tcpPort = 54321;
 
     static async Task Main()
     {
@@ -49,7 +41,7 @@ class IDPServers
 
         Console.WriteLine("UDP Server on port: " + idpServer.udpPort);
         Console.WriteLine("TCP Server on port: " + idpServer.tcpPort);
-        idpServer.PrintLocalIPAddresses();
+        PrintLocalIPAddresses();
         await idpServer.PrintPublicIPAddress();
 
         // Wait for both tasks to complete
@@ -67,7 +59,7 @@ class IDPServers
                 IPEndPoint udpClientEndPoint = udpReceived.RemoteEndPoint;
                 byte[] udpReceivedBytes = udpReceived.Buffer;
 
-                string receivedMessage = Encoding.ASCII.GetString(udpReceivedBytes);
+                var receivedMessage = Encoding.ASCII.GetString(udpReceivedBytes);
 
                 string[] data = receivedMessage.Split(' ');
 
@@ -79,7 +71,7 @@ class IDPServers
                 setpoint = double.Parse(data[3]);
                 temperatPID = double.Parse(data[4]);
 
-                // PID
+                // PID CALCULATIONS
                 double error = setpoint - temperatPID;
                 integral += error;
                 double derivative = error - prevError;
@@ -105,7 +97,7 @@ class IDPServers
         }
     }
 
-    async Task StartTCPServer()
+    private async Task StartTCPServer()
     {
         TcpListener tcpListener = new TcpListener(IPAddress.Any, tcpPort);
         tcpListener.Start();
@@ -122,7 +114,7 @@ class IDPServers
 
                 while (true)
                 {
-                    string receivedMessage = await reader.ReadLineAsync();
+                    var receivedMessage = await reader.ReadLineAsync();
 
                     if (string.IsNullOrEmpty(receivedMessage))
                     {
@@ -157,6 +149,8 @@ class IDPServers
 
                     temperatPID += outputPID;
 
+                    //deriv = deriv / 0.05; CHECK THIS
+
                     // Send the response back to the client
                     string messageToSend = temperatPID.ToString();
                     await writer.WriteLineAsync(messageToSend);
@@ -174,7 +168,7 @@ class IDPServers
 
 
     // Helper method to print local IP addresses
-    void PrintLocalIPAddresses()
+    private static void PrintLocalIPAddresses()
     {
         string[] localIPAddresses =
             Dns.GetHostAddresses(Dns.GetHostName())
@@ -190,7 +184,7 @@ class IDPServers
     }
 
     // Helper method to print the public IP address
-    async Task PrintPublicIPAddress()
+    private async Task PrintPublicIPAddress()
     {
         using HttpClient httpClient = new();
         try
