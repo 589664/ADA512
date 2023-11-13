@@ -9,6 +9,9 @@ Welcome to the ADA512 Cyber-Physical Systems and IoT course for the academic yea
 - **Course Coordinators:**
   - Anne-Lena Kampen
   - Marcin Fojcik
+- **Additional Information:** [course page](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/ADA512)
+
+This provides a clear and concise label for the link while still conveying that it leads to more information about the course.
 
 ## 🌟 Expectations
 
