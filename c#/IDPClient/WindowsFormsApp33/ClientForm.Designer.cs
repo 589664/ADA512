@@ -1,4 +1,4 @@
-﻿namespace IDPClient
+﻿namespace IDPClients
 {
     partial class ClientForm
     {

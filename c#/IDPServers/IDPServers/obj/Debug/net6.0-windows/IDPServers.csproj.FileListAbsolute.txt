@@ -1,0 +1,14 @@
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\bin\Debug\net6.0-windows\IDPServers.exe
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\bin\Debug\net6.0-windows\IDPServers.deps.json
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\bin\Debug\net6.0-windows\IDPServers.runtimeconfig.json
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\bin\Debug\net6.0-windows\IDPServers.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\bin\Debug\net6.0-windows\IDPServers.pdb
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.AssemblyInfoInputs.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.AssemblyInfo.cs
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.csproj.CoreCompileInputs.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\refint\IDPServers.dll
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.pdb
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\IDPServers.genruntimeconfig.cache
+C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#\IDPServers\IDPServers\obj\Debug\net6.0-windows\ref\IDPServers.dll

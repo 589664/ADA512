@@ -13,8 +13,8 @@ class IDPServers
     double ki = 0.01;
     double kd = 0.01;
 
-    double integral = 0;
-    double prevError = 0;
+    double integral;
+    double prevError;
 
     // Define UDP server-related variables
     readonly int udpPort = 12345;

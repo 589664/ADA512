@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IDPClient.Properties {
+namespace IDPClients.Properties {
     using System;
     
     

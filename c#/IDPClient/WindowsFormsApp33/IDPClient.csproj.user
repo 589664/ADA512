@@ -3,4 +3,8 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <RemoteDebugEnabled>false</RemoteDebugEnabled>
+    <StartWorkingDirectory>C:\Users\maksi\Desktop\kurs\ADA512 [Cyber physical systems and IoT]\ADA512_repo\c#</StartWorkingDirectory>
+  </PropertyGroup>
 </Project>

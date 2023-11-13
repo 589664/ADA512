@@ -11,34 +11,34 @@ using LiveCharts;
 using LiveCharts.Wpf;
 
 
-namespace IDPClient
+namespace IDPClients
 {
     public partial class ClientForm : Form
     {
 
         // UDP/TCP communication settings
-        string serverIP = "84.215.100.38";      // Server IP address
-        int UDPport = 12345;                    // UDP Server port number
-        int TCPport = 54321;                    // TCP Server port number
-        UdpClient udpClient;                    // UDP client for communication
-        IPEndPoint serverEndPoint;              // Server endpoint
-        private TcpClient tcpClient;            // TCP client for communication
-        private NetworkStream networkStream;    // Network stream for TCP communication
+        string serverIP = "84.215.100.38";                  // Server IP address
+        int[] UDPports = new int[] { 12345, 12346 };        // UDP Server port number
+        int TCPport = 54321;                                // TCP Server port number
+        UdpClient udpClient;                                // UDP client for communication
+        IPEndPoint serverEndPoint;                          // Server endpoint
+        private TcpClient tcpClient;                        // TCP client for communication
+        private NetworkStream networkStream;                // Network stream for TCP communication
 
         // PID controller settings
         // PID controller settings
-        int time = 50;                          // Timer interval in milliseconds
-        int delay = 1;                          // Delay in milliseconds
-        double setpoint = 40.0;                 // Desired temperature setpoint
-        double outputLoc, outputPID;            // Control outputs
-        double temperatLoc = 40.0;              // Local temperature
-        double temperatPID;                     // PID-controlled temperature
-        double kp = 0.1;                        // Proportional constant
-        double ki = 0.01;                       // Integral constant
-        double kd = 0.01;                       // Derivative constant
-        double integral;                        // Integral sum
-        double prevError;                       // Previous error
-        int countLOC = 0, countPID = 0;         // Iteration counters
+        int time = 50;                                      // Timer interval in milliseconds
+        int delay = 1;                                      // Delay in milliseconds
+        double setpoint = 40.0;                             // Desired temperature setpoint
+        double outputLoc, outputPID;                        // Control outputs
+        double temperatLoc = 40.0;                          // Local temperature
+        double temperatPID;                                 // PID-controlled temperature
+        double kp = 0.1;                                    // Proportional constant
+        double ki = 0.01;                                   // Integral constant
+        double kd = 0.01;                                   // Derivative constant
+        double integral;                                    // Integral sum
+        double prevError;                                   // Previous error
+        int countLOC = 0, countPID = 0;                     // Iteration counters
 
         // Variables to track transmission speed
         double udpTransmissionSpeed = 0.0;                                  // Speed in bytes per second for UDP
@@ -54,7 +54,7 @@ namespace IDPClient
         private readonly LineSeries setpointSeries = new LineSeries
         {
             Title = "Setpoint",
-            Values = new ChartValues<double> { 40,40 },
+            Values = new ChartValues<double> { 40, 40 },
             Fill = Brushes.Transparent,
             StrokeThickness = 1,
             PointGeometry = null,
@@ -62,7 +62,7 @@ namespace IDPClient
         private LineSeries temperatLocSeries = new LineSeries
         {
             Title = "TemperatLoc",
-            Values = new ChartValues<double> { 40,40 },
+            Values = new ChartValues<double> { 40, 40 },
             Fill = Brushes.Transparent,
             StrokeThickness = 1,
             PointGeometry = null,
@@ -174,48 +174,74 @@ namespace IDPClient
         }
 
 
-    private void UDProtocol()
-    {
-        while (true)
+        private void UDProtocol()
         {
-            try
-            {
-                    //Send data to the server
-                    string messageToSend = kp.ToString() + " " + ki.ToString() + " " + kd.ToString() + " " + setpoint.ToString() + " " + temperatPID.ToString();
-                    byte[] messageBytes = Encoding.ASCII.GetBytes(messageToSend);
-                    udpClient.Send(messageBytes, messageBytes.Length, serverEndPoint);
+            IDPClients udpClient1 = new IDPClients(serverIP, UDPports[0]);
 
-                    // Calculate UDP transmission speed
-                    DateTime currentTime = DateTime.UtcNow;
-                    double elapsedTimeSeconds = (currentTime - udpLastTransmissionTime).TotalSeconds;
-                    udpTransmissionSpeed = messageBytes.Length / elapsedTimeSeconds;
-                    udpLastTransmissionTime = currentTime;
+            while (true)
+            {
+                try
+                {
+                    // Send data to the server
+                    string messageToSend = $"{kp} {ki} {kd} {setpoint} {temperatPID}";
+                    udpClient1.SendData(messageToSend);
+
+                    // Retrieve transmission speed from the UDPClient instance
+                    double udpTransmissionSpeed = udpClient1.TransmissionSpeed;
 
                     // Display UDP transmission speed
                     BeginInvoke((Action)(() =>
                     {
                         udpTransmissionSpeedSeries.Values.Add(Math.Floor(udpTransmissionSpeed));
                     }));
-                
-                    // Receive data from the server
-                    IPEndPoint serverResponseEndPoint = new IPEndPoint(IPAddress.Any, 0);
-                    byte[] receivedBytes = udpClient.Receive(ref serverResponseEndPoint);
-                    string receivedMessage = Encoding.ASCII.GetString(receivedBytes);
 
-                    temperatPID = Double.Parse(receivedMessage);
+                    // Receive data from the server
+                    string receivedMessage = udpClient1.ReceiveData();
+
+                    temperatPID = double.Parse(receivedMessage);
                     countPID++;
 
                     // Sleep for a while before the next iteration
                     Thread.Sleep(time * delay);
-            }
-            catch (Exception ee)
-            {
-                // Handle exceptions related to UDP communication
-                udpClient = new UdpClient();
-                serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIP), UDPport);
+                }
+                catch (Exception ee)
+                {
+                    // Handle exceptions related to UDP communication
+                    udpClient1.Close();
+                    break;
+                }
             }
         }
-    }
+
+        private void UDProtocolhigh()
+        {
+            IDPClients udpClient1 = new IDPClients(serverIP, UDPports[0]);
+
+            while (true)
+            {
+                try
+                {
+                    // Send data to the server
+                    string messageToSend = $"{kp} {ki} {kd} {setpoint} {temperatPID}";
+                    udpClient1.SendData(messageToSend);
+
+                    // Receive data from the server
+                    string receivedMessage = udpClient1.ReceiveData();
+
+                    temperatPID = double.Parse(receivedMessage);
+                    countPID++;
+
+                    // Sleep for a while before the next iteration
+                    Thread.Sleep(time * delay);
+                }
+                catch (Exception ee)
+                {
+                    // Handle exceptions related to UDP communication
+                    udpClient1.Close();
+                    break;
+                }
+            }
+        }
 
         private async Task TCPProtocol()
         {
@@ -293,8 +319,15 @@ namespace IDPClient
                 {
                     // UDP setup
                     udpClient = new UdpClient();
-                    serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIP), UDPport);
                     UDProtocol();
+                });
+                // 2nd task for high traffic
+                Task runUDPhigh = Task.Run(() =>
+                {
+                    Thread.Sleep(10000);
+                    Console.WriteLine("High traffic");
+                    udpClient = new UdpClient();
+                    UDProtocolhigh();
                 });
             }
             else if (radioButtonTCP.Checked)
@@ -313,7 +346,7 @@ namespace IDPClient
         private void randomValueButton(object sender, EventArgs e)
         {
             // Add a random value to the setpoint
-            setpointSeries.Values.Add(randomNR.NextDouble()*100);
+            setpointSeries.Values.Add(randomNR.NextDouble() * 100);
         }
 
         private void plus_Click(object sender, EventArgs e)
