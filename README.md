@@ -1,4 +1,4 @@
-# 📚 ADA512 Cyber-Physical Systems and IoT - Student README
+# 📚 ADA512 Cyber-Physical Systems and IoT
 
 Welcome to the ADA512 Cyber-Physical Systems and IoT course for the academic year 2023/2024! 🌟
 
