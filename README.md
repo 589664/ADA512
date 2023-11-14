@@ -11,8 +11,6 @@ Welcome to the ADA512 Cyber-Physical Systems and IoT course for the academic yea
   - Marcin Fojcik
 - **Additional Information:** [course page](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/ADA512)
 
-This provides a clear and concise label for the link while still conveying that it leads to more information about the course.
-
 ## 🌟 Expectations
 
 This course explores the fascinating world of Cyber-Physical Systems (CPS) and the Internet of Things (IoT). CPS combines digital technology and physical systems, including industrial processes and robotics, driving Industry 4.0. Let's dive into the course content:
